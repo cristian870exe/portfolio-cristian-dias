@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cristian — Portfólio</title>
+  <meta name="description" content="Portfólio pessoal de Cristian — análise de dados, risco de crédito e desenvolvimento.">
+
+  <!-- Fontes: Space Grotesk para títulos (personalidade tech), Inter para leitura, JetBrains Mono para os detalhes "de dados" -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ===== CABEÇALHO / MENU FIXO (visível em todas as seções) ===== -->
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="#topo" class="logo" aria-label="Voltar ao topo">
+        <span class="logo__mono">&gt;</span> cristian<span class="logo__cursor">_</span>
+      </a>
+
+      <!-- Botão hambúrguer para telas pequenas -->
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="nav" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav" id="nav">
+        <a href="#sobre" class="nav__link">Sobre mim</a>
+        <a href="#formacao" class="nav__link">Formação</a>
+        <a href="#portfolio" class="nav__link">Portfólio</a>
+        <a href="#contato" class="nav__link">Contato</a>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Alternar tema claro/escuro">
+          <span id="themeIcon">🌙</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="topo">
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <div class="hero__grid">
+        <p class="eyebrow">Portfólio pessoal</p>
+        <h1 class="hero__title">
+          Transformo <span class="hl hl--pink">números</span> em
+          <span class="hl hl--blue">decisão</span> e ideias em
+          <span class="hl hl--yellow">código</span>.
+        </h1>
+
+        <!-- Elemento de assinatura: um "terminal" que "digita" uma consulta e revela a apresentação -->
+        <div class="terminal" aria-hidden="false">
+          <div class="terminal__bar">
+            <span class="dot dot--pink"></span><span class="dot dot--yellow"></span><span class="dot dot--mint"></span>
+            <span class="terminal__title">consulta.sql</span>
+          </div>
+          <pre class="terminal__body"><code><span class="kw">SELECT</span> nome, funcao <span class="kw">FROM</span> devs
+<span class="kw">WHERE</span> paixao = <span class="str">'dados'</span>
+  <span class="kw">AND</span> curiosidade = <span class="str">'infinita'</span>;
+
+<span class="out" id="typedOut"></span></code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SOBRE MIM ===== -->
+    <section class="section" id="sobre">
+      <div class="section__inner">
+        <p class="section__eyebrow">01 · Sobre mim</p>
+        <h2 class="section__title">Quem eu sou</h2>
+
+        <div class="about">
+          <div class="about__text">
+            <p>
+              Sou o <strong>Cristian</strong>, estagiário na área de <strong>Modelagem e Risco de Crédito</strong>
+              na CAIXA Consórcio, em Barueri, no modelo híbrido. No dia a dia, trabalho com indicadores de risco
+              de crédito, extração de dados, dashboards em Power BI e ferramentas de motor de decisão.
+            </p>
+            <p>
+              Antes de entrar na área de dados, atuei em <strong>liderança no varejo</strong> — foi ali que passei
+              a acompanhar indicadores de negócio de perto e percebi que queria trabalhar diretamente com dados.
+              Hoje curso <strong>Análise e Desenvolvimento de Sistemas</strong> na UNINTER e moro em Osasco, SP.
+            </p>
+            <p>
+              Gosto de estudar e testar coisas fora do horário de trabalho também: já brinquei com visão
+              computacional, resolvo desafios de lógica de programação e mantenho projetos pessoais de web no ar.
+            </p>
+          </div>
+
+          <div class="about__skills">
+            <h3 class="about__skills-title">Ferramentas do dia a dia</h3>
+            <ul class="meter-list">
+              <li class="meter"><span class="meter__label">SQL</span><span class="meter__bar"><span class="meter__fill" style="--w:85%; --c:var(--pink)"></span></span></li>
+              <li class="meter"><span class="meter__label">Power BI</span><span class="meter__bar"><span class="meter__fill" style="--w:80%; --c:var(--blue)"></span></span></li>
+              <li class="meter"><span class="meter__label">Python</span><span class="meter__bar"><span class="meter__fill" style="--w:70%; --c:var(--yellow)"></span></span></li>
+              <li class="meter"><span class="meter__label">Excel</span><span class="meter__bar"><span class="meter__fill" style="--w:85%; --c:var(--mint)"></span></span></li>
+              <li class="meter"><span class="meter__label">JavaScript</span><span class="meter__bar"><span class="meter__fill" style="--w:60%; --c:var(--pink)"></span></span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FORMAÇÃO ===== -->
+    <section class="section section--tint" id="formacao">
+      <div class="section__inner">
+        <p class="section__eyebrow">02 · Formação</p>
+        <h2 class="section__title">Como cheguei até aqui</h2>
+
+        <!-- Trilha vertical estilo "linha do tempo de dados" -->
+        <ol class="timeline">
+          <li class="timeline__item">
+            <span class="timeline__dot" style="--c:var(--blue)"></span>
+            <div class="timeline__card">
+              <p class="timeline__tag">Em andamento</p>
+              <h3>Análise e Desenvolvimento de Sistemas</h3>
+              <p class="timeline__meta">UNINTER — Centro Universitário Internacional</p>
+              <p>Formação voltada à construção de sistemas, banco de dados e lógica de programação, aplicada
+                junto com a rotina de estágio na área de dados.</p>
+            </div>
+          </li>
+
+          <li class="timeline__item">
+            <span class="timeline__dot" style="--c:var(--pink)"></span>
+            <div class="timeline__card">
+              <p class="timeline__tag">Em andamento</p>
+              <h3>Trilha de Dados</h3>
+              <p class="timeline__meta">Data Academy</p>
+              <p>Estudo estruturado cobrindo SQL, Excel, Power BI e Python/pandas, com foco no que é usado
+                no dia a dia de estágio: extração de dados, relatórios e fechamento de indicadores.</p>
+            </div>
+          </li>
+
+          <li class="timeline__item">
+            <span class="timeline__dot" style="--c:var(--yellow)"></span>
+            <div class="timeline__card">
+              <p class="timeline__tag">Experiência</p>
+              <h3>Estágio em Modelagem e Risco de Crédito</h3>
+              <p class="timeline__meta">CAIXA Consórcio — Barueri (híbrido)</p>
+              <p>Indicadores de risco de crédito, extração e tratamento de dados, dashboards em Power BI
+                e apoio em ferramentas de motor de decisão.</p>
+            </div>
+          </li>
+
+          <li class="timeline__item">
+            <span class="timeline__dot" style="--c:var(--mint)"></span>
+            <div class="timeline__card">
+              <p class="timeline__tag">Antes dos dados</p>
+              <h3>Liderança no Varejo</h3>
+              <p class="timeline__meta">Experiência anterior</p>
+              <p>Acompanhamento de indicadores de negócio no dia a dia da operação — o ponto de partida
+                que despertou o interesse por análise de dados.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== PORTFÓLIO ===== -->
+    <section class="section" id="portfolio">
+      <div class="section__inner">
+        <p class="section__eyebrow">03 · Portfólio</p>
+        <h2 class="section__title">Coisas que eu construí</h2>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card__top" style="--c:var(--pink)">🍔</div>
+            <h3>DK Lanches</h3>
+            <p>Site de pedidos com carrinho de compras, integração com WhatsApp para envio do pedido
+              e sincronização de estoque em tempo real usando Firebase Firestore.</p>
+            <p class="card__tags"><span>HTML</span><span>JavaScript</span><span>Firebase</span></p>
+          </article>
+
+          <article class="card">
+            <div class="card__top" style="--c:var(--blue)">🖐️</div>
+            <h3>Jarvis Control</h3>
+            <p>Aplicação de controle por gestos de mão e comandos de voz, usando visão computacional
+              para interpretar movimentos em tempo real.</p>
+            <p class="card__tags"><span>Python</span><span>OpenCV</span><span>MediaPipe</span></p>
+          </article>
+
+          <article class="card">
+            <div class="card__top" style="--c:var(--yellow)">🍟</div>
+            <h3>Dudu Lanches</h3>
+            <p>Protótipo de site de pedidos, versão exploratória para testar layout e fluxo de compra
+              antes de evoluir para o projeto DK Lanches.</p>
+            <p class="card__tags"><span>HTML</span><span>CSS</span></p>
+          </article>
+
+          <article class="card">
+            <div class="card__top" style="--c:var(--mint)">🧩</div>
+            <h3>Desafios de lógica</h3>
+            <p>Resolução de problemas de lógica e estrutura de dados no HackerRank, incluindo problemas
+              de janela deslizante (sliding window), em Python e C++.</p>
+            <p class="card__tags"><span>Python</span><span>C++</span><span>Algoritmos</span></p>
+          </article>
+        </div>
+
+        <p class="portfolio-note">Este site está em construção contínua — novos projetos são adicionados
+          conforme evoluo nos estudos e no estágio.</p>
+      </div>
+    </section>
+
+    <!-- ===== CONTATO ===== -->
+    <section class="section section--tint" id="contato">
+      <div class="section__inner">
+        <p class="section__eyebrow">04 · Contato</p>
+        <h2 class="section__title">Vamos conversar?</h2>
+        <p class="contact-intro">Preencha o formulário abaixo — todos os campos são obrigatórios e o
+          e-mail é validado antes do envio.</p>
+
+        <form class="form" id="contactForm" novalidate>
+          <div class="form__field">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" placeholder="Como você se chama?" autocomplete="name">
+            <span class="form__error" id="erroNome" role="alert"></span>
+          </div>
+
+          <div class="form__field">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" placeholder="voce@exemplo.com" autocomplete="email">
+            <span class="form__error" id="erroEmail" role="alert"></span>
+          </div>
+
+          <div class="form__field">
+            <label for="mensagem">Mensagem</label>
+            <textarea id="mensagem" name="mensagem" rows="5" placeholder="Escreva sua mensagem"></textarea>
+            <span class="form__error" id="erroMensagem" role="alert"></span>
+          </div>
+
+          <button type="submit" class="btn">Enviar mensagem</button>
+        </form>
+
+        <!-- Modal de confirmação, exibido via JavaScript após o envio simulado -->
+        <div class="modal" id="successModal" hidden>
+          <div class="modal__box">
+            <p class="modal__icon">✅</p>
+            <h3>Mensagem enviada com sucesso!</h3>
+            <p>Obrigado pelo contato — retorno assim que possível.</p>
+            <button class="btn btn--ghost" id="closeModal" type="button">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>Feito por Cristian · <a href="mailto:cristiandias870@gmail.com">cristiandias870@gmail.com</a> · <span id="year"></span></p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,456 @@
+/* =========================================================
+   TOKENS — paleta, tipografia e espaçamento centralizados
+   ========================================================= */
+:root {
+  --ink: #191A2E;
+  --paper: #FFFFFF;
+  --paper-tint: #F6F5FB;
+  --muted: #63637C;
+
+  --pink: #FF3D6E;
+  --blue: #2F6FED;
+  --yellow: #FFC53D;
+  --mint: #14B8A6;
+
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --radius: 18px;
+  --shadow-offset: 6px;
+  --header-h: 72px;
+}
+
+/* Tema escuro: alternado via atributo data-theme no <html> pelo JS */
+[data-theme="dark"] {
+  --ink: #F4F4FB;
+  --paper: #14131F;
+  --paper-tint: #1C1A2B;
+  --muted: #9C9BB5;
+}
+
+/* =========================================================
+   RESET BÁSICO
+   ========================================================= */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  transition: background .3s ease, color .3s ease;
+}
+
+h1, h2, h3 { font-family: var(--font-display); margin: 0 0 .5em; line-height: 1.15; }
+p { margin: 0 0 1em; color: var(--muted); }
+a { color: inherit; }
+img { max-width: 100%; display: block; }
+
+/* Foco visível para acessibilidade de teclado */
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+  html { scroll-behavior: auto; }
+}
+
+/* =========================================================
+   CABEÇALHO / NAVEGAÇÃO — fixo, visível em todas as seções
+   ========================================================= */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid var(--ink);
+}
+
+.header__inner {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-decoration: none;
+  color: var(--ink);
+}
+.logo__mono { color: var(--pink); }
+.logo__cursor { animation: blink 1.1s step-end infinite; color: var(--blue); }
+@keyframes blink { 50% { opacity: 0; } }
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.nav__link {
+  font-family: var(--font-mono);
+  font-size: .92rem;
+  text-decoration: none;
+  color: var(--ink);
+  position: relative;
+  padding: 4px 2px;
+}
+/* Sublinhado tipo "barra de progresso" que cresce no hover — ecoa os medidores usados na seção Sobre mim */
+.nav__link::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: -3px;
+  width: 0; height: 3px;
+  background: var(--pink);
+  transition: width .25s ease;
+}
+.nav__link:hover::after,
+.nav__link:focus-visible::after { width: 100%; }
+
+.theme-toggle {
+  border: 2px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: 999px;
+  width: 38px; height: 38px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  font-size: 1rem;
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+.menu-toggle span { width: 24px; height: 2px; background: var(--ink); display: block; }
+
+/* =========================================================
+   HERO
+   ========================================================= */
+.hero {
+  padding: 88px 24px 64px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  color: var(--pink);
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-size: .82rem;
+  margin-bottom: 12px;
+}
+
+.hero__title {
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  max-width: 16ch;
+  color: var(--ink);
+}
+
+.hl { padding: 0 .12em; border-radius: 6px; }
+.hl--pink { background: color-mix(in srgb, var(--pink) 22%, transparent); }
+.hl--blue { background: color-mix(in srgb, var(--blue) 20%, transparent); }
+.hl--yellow { background: color-mix(in srgb, var(--yellow) 35%, transparent); }
+
+/* Elemento de assinatura: janela de "terminal" com uma consulta SQL que "resolve" o nome do usuário */
+.terminal {
+  margin-top: 40px;
+  max-width: 560px;
+  background: var(--ink);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--pink);
+  border: 2px solid var(--ink);
+}
+.terminal__bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: rgba(255,255,255,.06);
+}
+.dot { width: 10px; height: 10px; border-radius: 50%; }
+.dot--pink { background: var(--pink); }
+.dot--yellow { background: var(--yellow); }
+.dot--mint { background: var(--mint); }
+.terminal__title {
+  margin-left: 8px;
+  font-family: var(--font-mono);
+  font-size: .78rem;
+  color: #B9B8CC;
+}
+.terminal__body {
+  margin: 0;
+  padding: 18px 20px 22px;
+  font-family: var(--font-mono);
+  font-size: .88rem;
+  color: #E7E6F4;
+  white-space: pre-wrap;
+}
+.kw { color: var(--pink); }
+.str { color: var(--yellow); }
+.out { color: var(--mint); font-weight: 600; }
+
+/* =========================================================
+   SEÇÕES — estrutura comum
+   ========================================================= */
+.section { padding: 84px 24px; }
+.section--tint { background: var(--paper-tint); }
+.section__inner { max-width: 1100px; margin: 0 auto; }
+
+.section__eyebrow {
+  font-family: var(--font-mono);
+  color: var(--blue);
+  font-size: .82rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.section__title { font-size: clamp(1.6rem, 3.4vw, 2.4rem); margin-bottom: 40px; }
+
+/* =========================================================
+   SOBRE MIM
+   ========================================================= */
+.about {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.about__text p { color: var(--ink); opacity: .85; }
+
+.about__skills-title {
+  font-family: var(--font-mono);
+  font-size: .95rem;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  margin-bottom: 18px;
+  color: var(--muted);
+}
+
+.meter-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.meter { display: grid; grid-template-columns: 90px 1fr; align-items: center; gap: 12px; }
+.meter__label { font-family: var(--font-mono); font-size: .85rem; }
+.meter__bar {
+  height: 10px;
+  border-radius: 999px;
+  background: var(--paper-tint);
+  border: 2px solid var(--ink);
+  overflow: hidden;
+  display: block;
+}
+.meter__fill {
+  display: block;
+  height: 100%;
+  width: var(--w);
+  background: var(--c);
+  border-radius: 999px 0 0 999px;
+}
+
+/* =========================================================
+   FORMAÇÃO — linha do tempo
+   ========================================================= */
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 22px;
+  border-left: 3px solid var(--ink);
+  display: grid;
+  gap: 32px;
+}
+.timeline__item { position: relative; padding-left: 26px; }
+.timeline__dot {
+  position: absolute;
+  left: -33px; top: 4px;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: var(--c);
+  border: 3px solid var(--paper);
+  box-shadow: 0 0 0 2px var(--ink);
+}
+.timeline__card {
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+}
+.timeline__tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--pink);
+  margin-bottom: 6px;
+}
+.timeline__meta { font-family: var(--font-mono); font-size: .82rem; color: var(--muted); margin-bottom: 10px; }
+
+/* =========================================================
+   PORTFÓLIO — cartões
+   ========================================================= */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 22px;
+}
+.card {
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  padding: 22px;
+  box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--ink);
+  transition: transform .18s ease;
+}
+.card:hover { transform: translate(-3px, -3px); }
+.card__top {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  background: var(--c);
+  display: grid; place-items: center;
+  font-size: 1.3rem;
+  margin-bottom: 16px;
+}
+.card__tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.card__tags span {
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  border: 1px solid var(--muted);
+  border-radius: 999px;
+  padding: 3px 10px;
+  color: var(--muted);
+}
+.portfolio-note { margin-top: 28px; font-family: var(--font-mono); font-size: .85rem; }
+
+/* =========================================================
+   CONTATO — formulário
+   ========================================================= */
+.contact-intro { max-width: 52ch; }
+
+.form { max-width: 520px; display: grid; gap: 20px; }
+.form__field { display: grid; gap: 6px; }
+.form__field label { font-family: var(--font-mono); font-size: .85rem; }
+.form__field input,
+.form__field textarea {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 2px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  resize: vertical;
+}
+.form__error {
+  font-family: var(--font-mono);
+  font-size: .78rem;
+  color: var(--pink);
+  min-height: 1em;
+}
+.form__field--invalid input,
+.form__field--invalid textarea { border-color: var(--pink); }
+
+.btn {
+  justify-self: start;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: .95rem;
+  padding: 13px 26px;
+  border-radius: 999px;
+  border: 2px solid var(--ink);
+  background: var(--yellow);
+  color: var(--ink);
+  cursor: pointer;
+  box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--ink);
+  transition: transform .15s ease;
+}
+.btn:hover { transform: translate(-2px, -2px); }
+.btn--ghost { background: var(--paper); box-shadow: none; margin-top: 12px; }
+
+/* Modal de confirmação de envio */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.5);
+  display: grid;
+  place-items: center;
+  z-index: 200;
+  padding: 20px;
+}
+.modal[hidden] { display: none; }
+.modal__box {
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  padding: 32px;
+  max-width: 360px;
+  text-align: center;
+  box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--mint);
+}
+.modal__icon { font-size: 2rem; margin: 0 0 8px; }
+
+/* =========================================================
+   RODAPÉ
+   ========================================================= */
+.footer {
+  text-align: center;
+  padding: 32px 24px;
+  font-family: var(--font-mono);
+  font-size: .8rem;
+  color: var(--muted);
+}
+
+/* =========================================================
+   RESPONSIVO
+   ========================================================= */
+@media (max-width: 860px) {
+  .about { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 680px) {
+  .menu-toggle { display: flex; }
+
+  .nav {
+    position: absolute;
+    top: var(--header-h);
+    left: 0; right: 0;
+    background: var(--paper);
+    border-bottom: 2px solid var(--ink);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    padding: 16px 24px 20px;
+    transform: translateY(-8px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease, transform .2s ease;
+  }
+  .nav.is-open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .nav__link { padding: 10px 0; width: 100%; }
+  .theme-toggle { margin-top: 8px; }
+}
